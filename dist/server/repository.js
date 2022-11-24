@@ -154,7 +154,7 @@ var loginUser = function (name) { return __awaiter(void 0, void 0, void 0, funct
                         messages: [],
                         counterNewMessage: 0,
                         users: [],
-                        avatar: '000000'
+                        avatar: user_2.avatar
                     })];
             case 7: return [3 /*break*/, 9];
             case 8:

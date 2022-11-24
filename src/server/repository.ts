@@ -79,7 +79,7 @@ export const loginUser = async (name: string): Promise<UserResponseType> => {
                 users: [],
             })
         } else {
-           const user = await new User({ name });
+            const user = await new User({ name: name });
             user.avatar = createAvatars()
             await user.save()
 
@@ -87,7 +87,7 @@ export const loginUser = async (name: string): Promise<UserResponseType> => {
                 messages: [],
                 counterNewMessage: 0,
                 users:[],
-                avatar: '000000'
+                avatar: user.avatar
             })
         }
     } catch (error) {
