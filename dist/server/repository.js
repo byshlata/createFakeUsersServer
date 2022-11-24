@@ -39,7 +39,6 @@ exports.__esModule = true;
 exports.getMessage = exports.loginUser = exports.checkNewMessage = exports.readMessage = exports.findAllUser = void 0;
 var user_1 = require("../models/user");
 var throwError_1 = require("../utils/throwError");
-var createAvatarBase64_1 = require("../utils/createAvatarBase64");
 var statusMessage_1 = require("../enums/statusMessage");
 var sortMessageByData_1 = require("../utils/sortMessageByData");
 var findAllUser = function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -143,15 +142,16 @@ var loginUser = function (name) { return __awaiter(void 0, void 0, void 0, funct
             case 3: return [4 /*yield*/, new user_1.User({ name: name })];
             case 4:
                 user_2 = _a.sent();
-                user_2.avatar = (0, createAvatarBase64_1.createAvatars)();
+                //user.avatar = createAvatars()
                 return [4 /*yield*/, user_2.save()];
             case 5:
+                //user.avatar = createAvatars()
                 _a.sent();
                 return [2 /*return*/, {
                         messages: [],
                         counterNewMessage: 0,
                         users: [],
-                        avatar: user_2.avatar
+                        avatar: ''
                     }];
             case 6: return [3 /*break*/, 8];
             case 7:

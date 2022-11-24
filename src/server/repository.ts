@@ -79,14 +79,14 @@ export const loginUser = async (name: string): Promise<UserResponseType> => {
             }
         } else {
             const user = await new User({ name });
-            user.avatar = createAvatars()
+            //user.avatar = createAvatars()
             await user.save()
 
             return {
                 messages: [],
                 counterNewMessage: 0,
                 users:[],
-                avatar: user.avatar
+                avatar: ''
             }
         }
     } catch (error) {
