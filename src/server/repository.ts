@@ -65,31 +65,38 @@ export const loginUser = async (name: string): Promise<UserResponseType> => {
         const user = await User.findOne({ name });
         //const users = await findAllUser()
 
-        if (user) {
-            const newMessage = user.messages.slice(-user.countReceivedMessage)
-            const countNewMessage = user.countReceivedMessage
-            user.countReceivedMessage = 0;
-            user.countMessage = newMessage.length;
-            await user.save()
+        return Promise.resolve({
+            messages: [],
+            counterNewMessage: 0,
+            users:[],
+            avatar: ''
+        })
 
-            return Promise.resolve({
-                messages: sortMessageByData(user.messages),
-                counterNewMessage: countNewMessage,
-                avatar: user.avatar,
-                users: [],
-            })
-        } else {
-            const user = await new User({ name });
-            //user.avatar = createAvatars()
-            await user.save()
-
-            return Promise.resolve({
-                messages: [],
-                counterNewMessage: 0,
-                users:[],
-                avatar: ''
-            })
-        }
+        // if (user) {
+        //     const newMessage = user.messages.slice(-user.countReceivedMessage)
+        //     const countNewMessage = user.countReceivedMessage
+        //     user.countReceivedMessage = 0;
+        //     user.countMessage = newMessage.length;
+        //     await user.save()
+        //
+        //     return Promise.resolve({
+        //         messages: sortMessageByData(user.messages),
+        //         counterNewMessage: countNewMessage,
+        //         avatar: user.avatar,
+        //         users: [],
+        //     })
+        // } else {
+        //     const user = await new User({ name });
+        //     //user.avatar = createAvatars()
+        //     await user.save()
+        //
+        //     return Promise.resolve({
+        //         messages: [],
+        //         counterNewMessage: 0,
+        //         users:[],
+        //         avatar: ''
+        //     })
+        // }
     } catch (error) {
         throwError()
     }

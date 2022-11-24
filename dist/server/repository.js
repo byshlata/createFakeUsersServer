@@ -40,7 +40,6 @@ exports.getMessage = exports.loginUser = exports.checkNewMessage = exports.readM
 var user_1 = require("../models/user");
 var throwError_1 = require("../utils/throwError");
 var statusMessage_1 = require("../enums/statusMessage");
-var sortMessageByData_1 = require("../utils/sortMessageByData");
 var findAllUser = function () { return __awaiter(void 0, void 0, void 0, function () {
     var user;
     return __generator(this, function (_a) {
@@ -117,48 +116,52 @@ var checkNewMessage = function (name) { return __awaiter(void 0, void 0, void 0,
 }); };
 exports.checkNewMessage = checkNewMessage;
 var loginUser = function (name) { return __awaiter(void 0, void 0, void 0, function () {
-    var user, newMessage, countNewMessage, user_2, error_2;
+    var user, error_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 7, , 8]);
+                _a.trys.push([0, 2, , 3]);
                 return [4 /*yield*/, user_1.User.findOne({ name: name })];
             case 1:
                 user = _a.sent();
-                if (!user) return [3 /*break*/, 3];
-                newMessage = user.messages.slice(-user.countReceivedMessage);
-                countNewMessage = user.countReceivedMessage;
-                user.countReceivedMessage = 0;
-                user.countMessage = newMessage.length;
-                return [4 /*yield*/, user.save()];
-            case 2:
-                _a.sent();
-                return [2 /*return*/, Promise.resolve({
-                        messages: (0, sortMessageByData_1.sortMessageByData)(user.messages),
-                        counterNewMessage: countNewMessage,
-                        avatar: user.avatar,
-                        users: []
-                    })];
-            case 3: return [4 /*yield*/, new user_1.User({ name: name })];
-            case 4:
-                user_2 = _a.sent();
-                //user.avatar = createAvatars()
-                return [4 /*yield*/, user_2.save()];
-            case 5:
-                //user.avatar = createAvatars()
-                _a.sent();
+                //const users = await findAllUser()
                 return [2 /*return*/, Promise.resolve({
                         messages: [],
                         counterNewMessage: 0,
                         users: [],
                         avatar: ''
-                    })];
-            case 6: return [3 /*break*/, 8];
-            case 7:
+                    })
+                    // if (user) {
+                    //     const newMessage = user.messages.slice(-user.countReceivedMessage)
+                    //     const countNewMessage = user.countReceivedMessage
+                    //     user.countReceivedMessage = 0;
+                    //     user.countMessage = newMessage.length;
+                    //     await user.save()
+                    //
+                    //     return Promise.resolve({
+                    //         messages: sortMessageByData(user.messages),
+                    //         counterNewMessage: countNewMessage,
+                    //         avatar: user.avatar,
+                    //         users: [],
+                    //     })
+                    // } else {
+                    //     const user = await new User({ name });
+                    //     //user.avatar = createAvatars()
+                    //     await user.save()
+                    //
+                    //     return Promise.resolve({
+                    //         messages: [],
+                    //         counterNewMessage: 0,
+                    //         users:[],
+                    //         avatar: ''
+                    //     })
+                    // }
+                ];
+            case 2:
                 error_2 = _a.sent();
                 (0, throwError_1.throwError)();
-                return [3 /*break*/, 8];
-            case 8: return [2 /*return*/];
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); };
