@@ -62,7 +62,7 @@ export const loginUser = async (name: string): Promise<UserResponseType> => {
     try {
 
         const user = await User.findOne({ name });
-        const users = await findAllUser()
+        //const users = await findAllUser()
 
         if (user) {
             const newMessage = user.messages.slice(-user.countReceivedMessage)
@@ -75,7 +75,7 @@ export const loginUser = async (name: string): Promise<UserResponseType> => {
                 messages: sortMessageByData(user.messages),
                 counterNewMessage: countNewMessage,
                 avatar: user.avatar,
-                users,
+                users: [],
             }
         } else {
             const user = await new User({ name });
@@ -85,7 +85,7 @@ export const loginUser = async (name: string): Promise<UserResponseType> => {
             return {
                 messages: [],
                 counterNewMessage: 0,
-                users,
+                users:[],
                 avatar: user.avatar
             }
         }

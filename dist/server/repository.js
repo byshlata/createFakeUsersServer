@@ -118,50 +118,47 @@ var checkNewMessage = function (name) { return __awaiter(void 0, void 0, void 0,
 }); };
 exports.checkNewMessage = checkNewMessage;
 var loginUser = function (name) { return __awaiter(void 0, void 0, void 0, function () {
-    var user, users, newMessage, countNewMessage, user_2, error_2;
+    var user, newMessage, countNewMessage, user_2, error_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 8, , 9]);
+                _a.trys.push([0, 7, , 8]);
                 return [4 /*yield*/, user_1.User.findOne({ name: name })];
             case 1:
                 user = _a.sent();
-                return [4 /*yield*/, (0, exports.findAllUser)()];
-            case 2:
-                users = _a.sent();
-                if (!user) return [3 /*break*/, 4];
+                if (!user) return [3 /*break*/, 3];
                 newMessage = user.messages.slice(-user.countReceivedMessage);
                 countNewMessage = user.countReceivedMessage;
                 user.countReceivedMessage = 0;
                 user.countMessage = newMessage.length;
                 return [4 /*yield*/, user.save()];
-            case 3:
+            case 2:
                 _a.sent();
                 return [2 /*return*/, {
                         messages: (0, sortMessageByData_1.sortMessageByData)(user.messages),
                         counterNewMessage: countNewMessage,
                         avatar: user.avatar,
-                        users: users
+                        users: []
                     }];
-            case 4: return [4 /*yield*/, new user_1.User({ name: name })];
-            case 5:
+            case 3: return [4 /*yield*/, new user_1.User({ name: name })];
+            case 4:
                 user_2 = _a.sent();
                 user_2.avatar = (0, createAvatarBase64_1.createAvatars)();
                 return [4 /*yield*/, user_2.save()];
-            case 6:
+            case 5:
                 _a.sent();
                 return [2 /*return*/, {
                         messages: [],
                         counterNewMessage: 0,
-                        users: users,
+                        users: [],
                         avatar: user_2.avatar
                     }];
-            case 7: return [3 /*break*/, 9];
-            case 8:
+            case 6: return [3 /*break*/, 8];
+            case 7:
                 error_2 = _a.sent();
                 (0, throwError_1.throwError)();
-                return [3 /*break*/, 9];
-            case 9: return [2 /*return*/];
+                return [3 /*break*/, 8];
+            case 8: return [2 /*return*/];
         }
     });
 }); };
