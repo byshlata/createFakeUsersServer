@@ -14,7 +14,7 @@ router.post<Empty, MessageResponseType | ErrorResponseType, MessageSendType, Emp
         return res.status(200).send({message})
 
     } catch (error) {
-        res.status(400).send({message: Message.Error})
+        res.status(500).send({message: Message.Error})
     }
 });
 

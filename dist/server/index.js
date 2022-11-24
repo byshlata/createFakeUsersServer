@@ -61,13 +61,13 @@ var app = express();
 process.on('unhandledRejection', function (reason, p) {
     console.log(reason, p);
 });
-/*const corsOptions = {
-    origin: "*",
+var corsOptions = {
+    origin: ["https://byshlata.github.io", "http://localhost:3000"],
     credentials: true,
     optionsSuccessStatus: 200,
-    methods: ['GET', 'PUT', 'POST', 'DELETE'],
-}*/
-app.use(cors());
+    methods: ['GET', 'PUT', 'POST', 'DELETE']
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("".concat(path_1.Path.Check), check);
 app.use("".concat(path_1.Path.Login), login);

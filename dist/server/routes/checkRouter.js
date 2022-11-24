@@ -67,7 +67,7 @@ router.post("".concat(path_1.Path.Root), function (req, res) { return __awaiter(
                 return [2 /*return*/, res.status(200).send(__assign({}, messages))];
             case 2:
                 error_1 = _a.sent();
-                return [2 /*return*/, res.status(400).send({ message: message_1.Message.Error })];
+                return [2 /*return*/, res.status(500).send({ message: message_1.Message.Error })];
             case 3: return [2 /*return*/];
         }
     });

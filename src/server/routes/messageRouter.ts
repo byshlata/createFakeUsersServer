@@ -13,7 +13,7 @@ router.post<Empty, UserResponseType | ErrorResponseType, MessageType, Empty>(`${
         return res.status(200).send({message: Message.Success})
 
     } catch (error) {
-        res.status(400).send({message: Message.Error})
+        res.status(500).send({message: Message.Error})
     }
 });
 

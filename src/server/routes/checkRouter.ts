@@ -14,7 +14,7 @@ router.post<Empty, UserResponseType | ErrorResponseType, UserType, Empty>(`${Pat
         return res.status(200).send({...messages})
 
     } catch (error) {
-        return res.status(400).send({message: Message.Error})
+        return res.status(500).send({message: Message.Error})
     }
 });
 
