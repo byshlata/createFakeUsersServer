@@ -79,9 +79,9 @@ export const loginUser = async (name: string): Promise<UserResponseType> => {
                 users: [],
             })
         } else {
-           /* const user = await new User({ name: name });
+           const user = await new User({ name });
             user.avatar = createAvatars()
-            await user.save()*/
+            await user.save()
 
             return Promise.resolve({
                 messages: [],
