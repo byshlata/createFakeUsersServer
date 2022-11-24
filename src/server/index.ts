@@ -21,14 +21,14 @@ process.on('unhandledRejection', (reason, p) => {
     console.log(reason, p)
 })
 
-const corsOptions = {
-    origin: ["https://byshlata.github.io", "http://localhost:3000"],
+/*const corsOptions = {
+    origin: "*",
     credentials: true,
     optionsSuccessStatus: 200,
     methods: ['GET', 'PUT', 'POST', 'DELETE'],
-}
+}*/
 
-app.use(cors(corsOptions))
+app.use(cors())
 
 app.use(express.json())
 
