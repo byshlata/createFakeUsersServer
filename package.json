@@ -1,5 +1,5 @@
 {
-  "name": "serverv",
+  "name": "server",
   "version": "1.0.0",
   "main": "index.ts",
   "engines": {
