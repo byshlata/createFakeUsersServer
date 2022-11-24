@@ -133,12 +133,12 @@ var loginUser = function (name) { return __awaiter(void 0, void 0, void 0, funct
                 return [4 /*yield*/, user.save()];
             case 2:
                 _a.sent();
-                return [2 /*return*/, {
+                return [2 /*return*/, Promise.resolve({
                         messages: (0, sortMessageByData_1.sortMessageByData)(user.messages),
                         counterNewMessage: countNewMessage,
                         avatar: user.avatar,
                         users: []
-                    }];
+                    })];
             case 3: return [4 /*yield*/, new user_1.User({ name: name })];
             case 4:
                 user_2 = _a.sent();
@@ -147,12 +147,12 @@ var loginUser = function (name) { return __awaiter(void 0, void 0, void 0, funct
             case 5:
                 //user.avatar = createAvatars()
                 _a.sent();
-                return [2 /*return*/, {
+                return [2 /*return*/, Promise.resolve({
                         messages: [],
                         counterNewMessage: 0,
                         users: [],
                         avatar: ''
-                    }];
+                    })];
             case 6: return [3 /*break*/, 8];
             case 7:
                 error_2 = _a.sent();

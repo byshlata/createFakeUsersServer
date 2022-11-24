@@ -5,6 +5,7 @@ import { createAvatars } from '../utils/createAvatarBase64'
 import { StatusMessage } from "../enums/statusMessage";
 import { sortMessageByData } from "../utils/sortMessageByData";
 
+
 export const findAllUser = async (): Promise<string[]> => {
     const user = await User.find()
     return await user.map(user => user.name)
@@ -71,23 +72,23 @@ export const loginUser = async (name: string): Promise<UserResponseType> => {
             user.countMessage = newMessage.length;
             await user.save()
 
-            return {
+            return Promise.resolve({
                 messages: sortMessageByData(user.messages),
                 counterNewMessage: countNewMessage,
                 avatar: user.avatar,
                 users: [],
-            }
+            })
         } else {
             const user = await new User({ name });
             //user.avatar = createAvatars()
             await user.save()
 
-            return {
+            return Promise.resolve({
                 messages: [],
                 counterNewMessage: 0,
                 users:[],
                 avatar: ''
-            }
+            })
         }
     } catch (error) {
         throwError()
