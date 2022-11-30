@@ -1,18 +1,10 @@
-import { connect } from 'mongoose';
 import { Path } from "../enums/path";
 
 const express = require('express')
 const cors = require('cors')
-const check = require('./routes/checkRouter')
-const login = require('./routes/loginRouter')
-const getMessage = require('./routes/messageRouter')
-const readMessage = require('./routes/readMessageRouter')
+const users = require('./routes/users')
+const seed = require('./routes/seed')
 
-async function run() {
-    await connect('mongodb+srv://byshlata:wwwwww@userbase.zbjoeya.mongodb.net/userMessages?retryWrites=true&w=majority');
-}
-
-run().catch(err => console.log(err));
 
 const app = express();
 
@@ -32,10 +24,9 @@ app.use(cors(corsOptions))
 
 app.use(express.json())
 
-app.use(`${Path.Check}`, check)
-app.use(`${Path.Login}`, login)
-app.use(`${Path.GetMessage}`, getMessage)
-app.use(`${Path.ReadMessage}`, readMessage)
+
+app.use(`${Path.Users}`, users)
+app.use(`${Path.Seed}`, seed)
 
 const port = process.env.PORT || 5000
 

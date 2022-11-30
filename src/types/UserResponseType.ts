@@ -1,8 +1,5 @@
-import {MessageType} from "types";
+import { UserType } from "types/UserType";
 
 export type UserResponseType = {
-    users: string[],
-    avatar: string,
-    messages: MessageType[],
-    counterNewMessage?: number,
+    users: UserType[],
 }

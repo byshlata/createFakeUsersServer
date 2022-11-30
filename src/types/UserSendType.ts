@@ -1,11 +1,8 @@
-import {MessageType} from "types/MessageType";
+import { LanguageType } from "./LanguageType";
 
 export type UserSendType = {
-    _id: string,
-    name: string,
-    avatar: string,
-    countMessage: number,
-    countReceivedMessage: number,
-    messages: MessageType[]
-    _v: number
+    page: number,
+    amount: number
+    language: LanguageType,
+    seed: number
 }
